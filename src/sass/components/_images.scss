@@ -1,0 +1,33 @@
+//IMAGES
+img {
+	max-width: 100%;
+	height: auto;
+	&.center {
+		position: relative;
+		display: block;
+		margin: 0 auto;
+	}
+	&.border {
+		border: 5px solid $white;
+	}
+	&.right, &.alignright {
+	float: right;
+	margin: 0 0 10px 3%;
+	}
+	&.left, &.alignleft {
+	float: left;
+	margin: 0 3% 10px 0px;
+	}
+	&.top-left {
+		position: relative;
+		top: 0;
+		left: 0;
+		max-width: 100%;
+	}
+	&.bottom-right {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		max-width: 100%;
+	}
+}

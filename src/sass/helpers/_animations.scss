@@ -1,0 +1,125 @@
+//ANIMATIONS
+@keyframes scaleout {
+  0% {
+    transform: scale(0); }
+
+  100% {
+    transform: scale(1);
+    opacity: 0; } 
+}
+
+@include keyframes(load-spinner) {
+  0% {
+    @include transform(rotate(0deg) translateY(-50%) translateX(-50%));
+  }
+  100% {
+    @include transform(rotate(360deg) translateY(-50%) translateX(-50%));
+  }
+}
+
+@-webkit-keyframes bounce-arrow {
+  0%, 100% {top: 9px; opacity: 0.5}
+  25% {top: 12px; opacity: 1}
+  50% {opacity: 0.8}
+}
+@keyframes bounce-arrow {
+  0%, 100% {top: 9px; opacity: 0.5}
+  25% {top: 12px; opacity: 1}
+  50% {opacity: 0.8}
+}
+
+@include keyframes(bounce) {
+	@include transform(translate3d(0, 0, 0));
+  15% {
+    @include transform(scale(1.2));
+  }
+  20% {
+    @include transform(scale(1.2));
+  }
+  25% {
+    @include transform(scale(0.8));
+  }
+
+  50% {
+    @include transform(scale(1.02));
+  }
+  68% {
+    @include transform(scale(0.95));
+  }
+  85% {
+    @include transform(scale(1.01));
+  }
+  99% {
+    @include transform(scale(0.98));
+  }
+}
+@include keyframes(leftArrow) {
+	@include transform(translate3d(0, 0, 0));
+  20% {
+  	@include opacity(1);
+    @include transform(translateX(0%));
+  }
+  40% {
+    @include transform(translateX(50%));
+    @include opacity(1);
+  }
+  86% {
+  	@include opacity(0);
+  	@include transform(translateX(50%));
+  }
+  90% {
+    @include transform(translateX(0%));
+    @include opacity(0);
+  }
+}
+
+@keyframes skewing {
+  0% { transform: skewX(6deg); }
+  10% { transform: skewX(-6deg); }
+  20% { transform: skewX(4deg); }
+  30% { transform: skewX(-4deg); }
+  40% { transform: skewX(2deg); }
+  50% { transform: skewX(-6deg); }
+  55% { transform: skewX(6deg); }
+  60% { transform: skewX(-5deg); }
+  65% { transform: skewX(5deg); }
+  70% { transform: skewX(-4deg); }
+  75% { transform: skewX(4deg); }
+  80% { transform: skewX(-3deg); } 
+  85% { transform: skewX(3deg); }
+  90% { transform: skewX(-2deg); } 
+  95% { transform: skewX(2deg); }
+  100%   { transform: skewX(1deg); }
+}
+
+@keyframes skewing-child {
+  0%      { transform: skewX(-10deg); }
+  100%     { transform: skewX(10deg); }
+}
+
+@keyframes moving {
+  0% {transform: translate(-120px);}
+  20% {transform: translate(-20px);} 
+  50% {transform: translate(0px);} 
+  70% {transform: translate(20px);}
+  100% {transform: translate(120px);}
+}
+
+@keyframes squishing {
+  10%, 40%, 80% { transform: scale(1, .9); }
+  0%, 30%, 60%, 100% {transform: scale(.9, 1);}
+}
+
+@keyframes squishing-spin {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.4) rotate(180deg); }
+  100% {transform: scale(1) rotate(360deg);}
+}
+
+
+.animation-bounce {
+	@include animation('bounce 1s linear once');
+	-webkit-transform-origin: center bottom;
+	transform-origin: center bottom;
+}
+

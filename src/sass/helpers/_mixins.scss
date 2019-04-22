@@ -1,0 +1,183 @@
+@mixin transition($time) {
+  -webkit-transition: all $time ease; /* Saf3.2+, Chrome */ 
+  -o-transition: all $time ease; /* Opera 10.5+ */ 
+  -ms-transition: all $time ease; /* Opera 10.5+ */ 
+  transition: all $time ease;
+}
+@mixin transition-delay($time) {
+  -webkit-transition-delay: $time;
+  -o-transition-delay: $time;
+  -ms-transition-delay: $time; 
+  transition-delay: $time;
+}
+@mixin transform($transform) {
+  -webkit-transform: $transform; /* Saf3.2+, Chrome */ 
+  -ms-transform: $transform; /* Opera 10.5+ */ 
+  transform: $transform;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius; /* Saf3.2+, Chrome */ 
+  -ms-border-radius: $radius; /* Opera 10.5+ */ 
+ border-radius: $radius;
+}
+@mixin opacity($opacity) {
+  zoom: 1; 
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+  opacity: $opacity;
+}
+
+@mixin box-shadow($shadow1, $shadow2:false, $shadow3:false, $shadow4:false, $shadow5:false) {
+ $params: $shadow1;
+  @if $shadow2 
+    { $params: $shadow1, $shadow2; }
+    @if $shadow3 != false
+      { $params: $shadow1, $shadow2, $shadow3; }
+      @if $shadow4 != false
+        { $params: $shadow1, $shadow2, $shadow3, $shadow4; }
+        @if $shadow5 != false
+          { $params: $shadow1, $shadow2, $shadow3, $shadow4, $shadow5; }
+
+  -webkit-box-shadow: $params;
+  -ms-box-shadow: $params;
+  -moz-box-shadow: $params;
+  box-shadow: $params;
+}
+@mixin filter($filter){
+  -moz-filter: $filter;
+  -o-filter: $filter;
+  -ms-filter: $filter;
+  -webkit-filter: $filter;
+  filter: $filter;
+}
+
+@mixin background-cover($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$url}', sizingMethod='scale');
+  -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$url}', sizingMethod='scale');
+}
+
+@mixin placeholder-text($color){
+  &::-webkit-input-placeholder {
+     color: lighten($color, 5%);
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+     color: lighten($color, 5%); 
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+     color: lighten($color, 5%);  
+  }
+  &:-ms-input-placeholder {  
+    color: lighten($color, 5%);  
+  }
+}
+
+@mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
+  background-image: url($file-1x);
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (   -moz-min-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url($file-2x);
+    background-size: $width-1x $height-1x;
+  }
+}
+
+@mixin background-for-retina($size) {
+  @media
+    only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: $sm-width),
+    only screen and (   min--moz-device-pixel-ratio: 2) and (max-width: $sm-width),
+    only screen and (   -moz-min-device-pixel-ratio: 2) and (max-width: $sm-width),
+    only screen and (     -o-min-device-pixel-ratio: 2/1) and (max-width: $sm-width),
+    only screen and (        min-device-pixel-ratio: 2) and (max-width: $sm-width),
+    only screen and (                min-resolution: 192dpi) and (max-width: $sm-width),
+    only screen and (                min-resolution: 2dppx) and (max-width: $sm-width){
+      background-size: $size;
+    }
+}
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+// ----
+// libsass (v3.3.6)
+// ----
+
+// =========================================================================
+//
+//  PRECISE CONTROL OVER RESPONSIVE TYPOGRAPHY FOR SASS
+//  ---------------------------------------------------
+//  Indrek Paas @indrekpaas
+//
+//  Inspired by Mike Riethmuller's Precise control over responsive typography
+//  http://madebymike.com.au/writing/precise-control-responsive-typography/
+//
+//  `strip-unit()` function by Hugo Giraudel
+//  
+//  11.08.2016 Remove redundant `&` self-reference
+//  31.03.2016 Remove redundant parenthesis from output
+//  02.10.2015 Add support for multiple properties
+//  24.04.2015 Initial release
+//
+// =========================================================================
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+    #{$property}: $min-value;
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}

@@ -1,0 +1,542 @@
+.article-snippet {
+	border-bottom: 1px solid #CCC;
+	overflow: hidden;
+	@include transition(.3s);
+	position: relative;
+	height: 200px;
+	&:last-child {
+		border: none;
+	}
+	.post-thumbnail {
+		@include transition(.3s);
+		width: 200px;
+		height: 100%;
+		position: absolute;
+		top: 50%;
+		display: block;
+		overflow: hidden;
+		@include transform(translateY(-50%));
+		background-color: white;
+		line-height: 0;
+		background-size: cover;
+		background-position: center;
+		@media (max-width: $md-width){
+			width: 170px;
+		}
+		@media (max-width: $sm-width){
+			width: 100%;
+			position: relative;
+			top: 0;
+			height: 200px;
+			@include transform(none);
+		}
+	}
+	.meta-info {
+		padding: 2em 2em 2em 240px;
+		line-height: 1.6;
+		font-size: 0.85em;
+		z-index: 3;
+		position: absolute;
+		font-family: $quote-font;
+		right: 0em;
+		width: 100%;
+		top: 50%;
+		@include transform(translateY(-50%));
+		-webkit-font-smoothing: antialiased;
+		h1 {
+			font-size: 1.9em;
+			margin-bottom: 0;
+			font-family: $body-font;
+			@media (max-width: $md-width){
+				margin: 0;
+			}
+			@media (max-width: $sm-width){
+				font-size: 1.7em;
+				margin-bottom: 0.3em;
+			}
+		}
+		.category {
+			color: $gray;
+			font-size: 1em;
+			margin-bottom: 1em;
+			font-weight: 500;
+			line-height: 1;
+			a {
+				color: $gray;
+				&:hover {
+					color: lighten($gray, 20%);
+				}
+			}
+			@media (max-width: $md-width){
+				font-weight: 800;
+			}
+			@media (max-width: $sm-width){
+				margin-bottom: 15px;
+			}
+			.author {
+				color: #818a93;
+				line-height: 1;
+				a {
+					color: #818a93;
+					&:hover {
+						color: lighten(#818a93, 20%);
+					}
+				}
+				display: inline;
+				font-family: $gothic;
+				font-weight: 800;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				font-size: 0.785em;
+				@media (max-width: $md-width){
+					letter-spacing: 0;
+				}
+			}
+		}
+		@media (max-width: $md-width){
+			padding-left: 190px;
+			font-size: 0.725em;
+		}
+		@media (max-width: $sm-width){
+			padding: 1.4em;
+			position: relative;
+			top: 0;
+			@include transform(none);
+		}
+	}
+	&:hover {
+		.post-thumbnail { 
+			opacity: 0.8; 
+			@include transition(.3s);
+		}
+		.meta-info {
+			h1, h1 a {
+				color: $brand-primary;
+			}
+		} 
+	}
+	&.featured {
+		height: 350px;
+		position: relative;
+		display: block;
+		width: 50%;
+		float: left;
+		color: white;
+		&:first-child {
+			width: 48%;
+			margin: 0 2% 0 0;
+		}
+		&:before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.32);
+			background: -moz-linear-gradient(45deg, rgba(0,0,0,0.8) 0%, rgba(6,98,158,0.3) 75%, rgba(8,130,211,0.3) 100%);
+			background: -webkit-linear-gradient(45deg, rgba(0,0,0,0.8) 0%,rgba(6,98,158,0.3) 75%,rgba(8,130,211,0.3) 100%);
+			background: linear-gradient(45deg, rgba(0,0,0,0.8) 0%,rgba(6,98,158,0.3) 75%,rgba(8,130,211,0.3) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#000882d3',GradientType=1 );
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+		}
+		.post-thumbnail {
+			display: block;
+			width: 100%; 
+		}
+		.meta-info {
+			display: block;
+			width: 90%;
+			padding: 2em;
+			right: auto;
+			left: 0;
+			text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4), 0 0 50px black;
+			h1 {
+				font-size: 2.4em;
+				color: white;
+			}
+			.category {
+				display: block;
+				font-size: 	1.4em;
+				color: rgba(255,255,255,0.8);
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				width: 40%;
+				height: 3px;
+				background: $brand-primary-accent;
+				bottom: 0;
+				left: 2em;
+				max-width: 50px;
+				z-index: 2;
+			}
+		}
+		@media (max-width: $sm-width) {
+			border: 1px solid #eee;
+			margin: 1em 0;
+			height: auto;
+			width: 100%;
+			background-color: rgba(3, 97, 151, 1);
+			&:first-child {
+				width: 100%;
+				margin: 0;
+			}
+			&:before {
+				display: none;
+			}
+			.post-thumbnail {
+				width: 100%;
+				height: 200px;
+				@include filter(grayscale(0));
+			}
+			.meta-info {
+				width: 100%;
+				text-shadow: none;
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+	@media (max-width: $sm-width) {
+		border: 1px solid #eee;
+		margin: 1em 0;
+		height: auto;
+	}
+}
+
+header#main.blog-single {
+	height: auto;
+	position: relative;
+	min-height:500px;
+	max-height: 650px;
+	&:after {
+		content: "";
+		display: block;
+		width: 100%;
+		position: absolute;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background: rgba(40,40,40,0.2);
+		z-index: 1;
+	}
+	.header-title {
+		max-width: none;
+		z-index: 3;
+		h1 {
+			max-width: none;
+		}
+	}
+	.blog-header-meta-info {
+		line-height: 1.5;
+		font-size: 13px;
+		font-family: $gothic;
+		position: absolute;
+		bottom: 15%;
+		left: 0;
+		z-index: 2;
+		width: 100%;
+		text-align: center;
+		color: white;
+		font-style: italic;
+	    text-shadow: 0 1px 1px rgba(0,0,0,0.15);
+		.date {
+			font-style: italic;
+		}
+		a {
+			color: #ededed;
+		}
+	}
+}
+
+
+.articles-bg {
+	background: white;
+	padding: 1em 2em;
+	margin: 1em 0;
+	@media (max-width: $md-width){
+		padding: 1em 2em;
+	}
+	@media (max-width: $xs-width){
+		padding: 1em;
+		margin: 0 0 2em 0; 
+	}
+}
+
+article.main-article {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 3em 4em;
+	background: white;
+	.title {
+		font-size: 3.3em;
+		margin: 0 0 .2em 0;
+		font-family: $body-font;
+		@media (max-width: $md-width){
+			font-size: 2em;
+		}
+	}
+	.meta-info {
+		padding-bottom: 1em;
+		margin-bottom: 3em;
+		border-bottom: 1px solid #CCC;
+		.category {
+			color: $gray;
+			font-size: 1.1em;
+			margin-bottom: 30px;
+			font-weight: 500;
+			a {color: $gray;}
+		}
+		.author {
+			color: #999;
+			a {color: #999;}
+			display: inline;
+			margin-left: 6px;
+			font-family: $gothic;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-size: 0.785em;
+		}
+	}
+	@media (max-width: $md-width){
+		padding: 1em;
+	}
+}
+header#main.photo-documentary {
+	@include background-cover('../img/headers/blog_women-sitting.jpg');
+	background-position: center;
+	color: white;
+	max-height: 600px !important;
+	-webkit-font-smoothing: antialiased;
+	text-align: center;
+	&:before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		background: rgba(2, 53, 82, 0.7);
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+	}
+	.header-title {
+		max-width: 800px;
+		top: 54%;
+	}
+	.btn-link {
+		color: white;
+		color: rgba(255,255,255,0.7);
+	}
+	.title {
+		font-size: 3.3em;
+		margin: 0 0 .2em 0;
+		font-weight: 100;
+		text-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 0 20px rgba(0,0,0,0.1);
+		@media (max-width: $md-width){
+			font-size: 2em;
+		}
+	}
+	.meta-info {
+		padding-bottom: 1em;
+		margin-bottom: 3em;
+		color: $brand-primary;
+		.category {
+			color: $brand-primary;
+			font-size: 0.9em;
+			font-family: $gothic;
+			letter-spacing: 2px;
+			font-weight: 900;
+			text-transform: uppercase;
+			a {color: $brand-primary;}
+		}
+	}
+	@media (max-width: $sm-width){ 
+		max-height: 200px !important;
+		min-height: 300px !important;
+		.header-title {
+		    font-size: 0.8em;
+		    max-width: none;
+		}
+	}
+}
+
+// Photo Documentary
+article.photo-doc-article {
+	background: white;
+	padding-top: 4em;
+	.entrytext {
+		p, blockquote, a, h1, h2, h3, h4, h5, h6, ul, ol, dl, #sexy-author-bio, figure {
+			max-width: 900px;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+		}
+	} 
+	.entrytext {
+		p, h1, h2, h3, h4, h5, h6, ul, ol, dl, #sexy-author-bio {
+			padding: 0 20px;
+		}
+		#sexy-author-bio {
+			display: none;
+		}
+	}
+	figure.standout {
+		max-width: 1400px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+	}
+	.title {
+		font-size: 3.3em;
+		margin: 0 0 .2em 0;
+		font-family: $body-font;
+		@media (max-width: $md-width){
+			font-size: 2em;
+		}
+	}
+	.meta-info {
+		padding-bottom: 1em;
+		margin-bottom: 3em;
+		border-bottom: 1px solid #CCC;
+		.category {
+			color: $gray;
+			font-size: 1.1em;
+			margin-bottom: 30px;
+			font-weight: 500;
+			a {color: $gray;}
+		}
+		.author {
+			color: #999;
+			a {color: #999;}
+			display: inline;
+			margin-left: 6px;
+			font-family: $gothic;
+			font-weight: 100;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			font-size: 0.785em;
+		}
+	}
+	@media (max-width: $md-width){
+		p {
+			padding: 0 1em;
+		}
+	}
+	@media (max-width: $sm-width) {
+		padding-top: 2em;
+	}
+}
+
+// MAIN CATEGORIES NAVIGATION -------
+
+.categories {
+	font-weight: 800;
+	font-size: 1.5em;
+	line-height: 2;
+	.cat-item a {
+		@include transition(.2s);
+		padding: 0.5em 0.6em;
+		font-size: 18px;
+		line-height: 1.3;
+		display: block;
+		color: $gray;
+		font-weight: 100;
+		border-bottom: 1px solid #ddd;
+		&:hover {
+			color: white;
+			background-color: $brand-primary;
+		}
+		@media (max-width: $md-width){
+			font-size: 14px;
+		}
+	}
+}
+.videos-list { 
+	li {
+		width: 46%;
+		margin-right: 4%;
+		float: left;
+		&.categories {
+			width: 100%;
+			float: none;
+			margin: 0;
+		}
+	}
+	a {
+		font-size: 0.9em;
+		line-height: 1.2;
+		display: block;
+		margin-bottom: 1.5em;
+		color: $gray-lowlight;
+		font-weight: 100;
+		img {
+			margin-bottom: 0.6em;
+		}
+		&:hover {
+			color: darken($gray, 20%);
+		}
+		@media (max-width: $md-width){
+			font-size: 14px;
+		}
+	}
+}
+
+.learn-search {
+	position: relative;
+	input.search-field {
+		padding: 1em;
+		width: 100%;
+		font-size: 1em;
+		margin: 0;
+		@include transition(.2s);
+		border: 1px solid #CCC;
+		&:focus {
+			@include box-shadow(0 2px 3px rgba(0,0,0,0.02), 0 0 2px lighten($brand-primary, 30%));
+			border-color: lighten($brand-primary, 20%);
+		}
+		@media (max-width: $md-width){
+			font-size: 16px;
+		}
+	}
+	&:hover {
+		border-color: $gray;
+		.btn-search {
+			color: $brand-primary;
+		}
+	}
+}
+
+.wp-paginate {
+	text-align: center;
+	font-family: $quote-font !important;
+	margin: 1em 0;
+	li {
+		margin: 1em 0.1em;
+	}
+	a {
+		background: lighten($gray, 40%) !important;
+		border: none !important;
+		color: $gray !important;
+		margin-right: 4px;
+		padding: 4px 8px;
+		font-weight: 700;
+		font-size: 0.8em !important;
+	}
+	.current {
+		color: #fff;
+		background: $brand-primary;
+		border: none !important;
+		margin-right: 4px;
+		padding: 4px 8px;
+		font-weight: 700;
+		font-size: 0.8em !important;
+	}
+}
+.pagination a {
+	padding: 10px;
+	display: inline-block;
+	margin: 10px;
+}

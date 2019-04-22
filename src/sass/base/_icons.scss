@@ -1,0 +1,19 @@
+// ICONS
+
+svg[class*="icon-"] {
+	max-width: 1.5em;
+	height: 1.4em;
+	vertical-align: middle;
+	display: inline;
+	margin: 0 auto;
+	margin-top: -0.3em;
+	fill: currentColor;
+}
+svg[class*="full-width"] {
+	max-width: none;
+	height: auto;
+	vertical-align: middle;
+	width: 100%;
+	display: inline-block;
+	margin: 0 auto;
+}

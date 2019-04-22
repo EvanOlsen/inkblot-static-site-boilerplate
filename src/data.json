@@ -1,0 +1,9 @@
+{
+  "images": [{
+    "src": "https://via.placeholder.com/350x150",
+    "alt": "Image one alt text"
+  }, {
+    "src": "https://via.placeholder.com/550x250",
+    "alt": "Image two alt text"
+  }]
+}

@@ -1,0 +1,35 @@
+<!-- index.nunjucks -->
+{% extends "layout.njk" %}
+
+{% block content %}
+
+  {% import 'macros/nav-macro.njk' as nav %}
+
+  {{nav.active('item1')}}
+
+
+
+<div class="pad-tb">
+	<div class="content">
+		<h1>This is the main page!</h1>
+
+		<div class="gallery">
+			<!-- Loops through "images" array -->
+			{% for image in images %}
+			<div class="gallery__item">
+				<img src="{{image.src}}" alt="{{image.alt}}">
+			</div>
+			{% endfor %}
+		</div>
+
+		<form action="#" class="form-control">
+			<!-- input must have an required attribute -->
+			<input type="text" name="input" id="input" required>
+			<!-- labels must have placeholder and alt attributes -->
+			<label for="input" placeholder="First Placeholder Label" alt="Second Placeholder Label"></label>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

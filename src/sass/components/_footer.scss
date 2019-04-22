@@ -1,0 +1,222 @@
+//FOOTER
+
+footer#main-footer {
+	position: relative;
+	background: white;
+	font-family: $gothic;
+	color: $footer-text;
+	min-height: 120px;
+	max-height: 300px;
+	height: 22vw;
+	overflow: hidden;
+	.content {
+		min-height: 120px;
+		max-height: 300px;
+		height: 22vw;
+		max-width: 900px;
+		@media (min-width: 500px) {
+			width: 80%;
+		}
+	}
+	nav {
+		z-index: 2;
+		ul {
+			float: left;
+			li {
+				a {
+					@include transition(.25s);
+					display: block;
+					padding: 5px 15px;
+					line-height: 1.4;
+					color: $footer-text;
+					font-size: 0.85em;
+					font-weight: 600;
+					letter-spacing: 1px;
+					text-transform: uppercase;
+					-webkit-font-smoothing: antialiased;
+					&:hover {
+						color: white;
+					}
+				}
+				@media (max-width: $sm-width) {
+					float: none;
+					a {
+						padding: 10px;
+					}
+				} 
+			}
+			@media (max-width: $sm-width) {
+				width: 100%;
+				margin-top: 20px;
+			}
+		}
+		@media (max-width: $sm-width) {
+			min-height: 190px;
+		}
+	} /* nav */
+	#footer-logo {
+		position: absolute;
+		left: -3%;
+		top: 50%;
+		transform: translateY(-50%);
+		width: auto;
+		max-width: 380px;
+		height: 100%;
+	}
+	.social-icons {
+		a {
+			display: inline-block;
+			@include transition(.4s);
+			position: relative;
+			opacity: 0.5;
+			vertical-align: middle;
+			margin-right: 1em;
+			font-weight: normal !important;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+	.sep {
+		font-weight: 800;
+		transform: scale(0.8);
+		color: lighten($gray, 30%);
+	}
+	#contact {
+		text-align: left;
+		font-size: 1.2rem;
+		@include fluid-type(font-size, $xs-width, $lg-width, 11px, 21px);
+		color: black;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 3%;
+		width: auto;
+		display: inline-block;
+		a {
+			color: black;
+			font-weight: 600;
+			line-height: 1;
+			&:hover {
+				color: $brand-primary;
+			}
+			&#cta {
+				font-weight: normal;
+				box-shadow: inset 0 -0.35em 0 0 rgba($brand-primary, 0.3);
+			}
+		}
+		
+		@media (max-width: $xs-width) {
+			letter-spacing: -0.25px;
+		}
+	}
+}
+.colophon {
+	clear: both;
+	width: 100%;
+	font-size: 0.7em;
+	line-height: 1.4;
+	margin: 1.5em 0 0;
+	position: relative;
+	color: $gray;
+	a {
+		color: $gray;
+		&:hover {
+			@include transition(.2s);
+			color: $brand-primary;
+		}
+	}
+}
+
+
+.footer-email-sign-up {
+	position: relative;
+	float: right;
+	margin: 20px 0 -20px 0;
+	z-index: 2;
+	h1 {
+		font-family: $gothic;
+		text-transform: uppercase;
+		font-size: 15px;
+		font-weight: 800;
+		letter-spacing: 2px;
+		margin: 0 0 10px 0;
+		text-align: center;
+	}
+	.email-sign-up {
+		width: 230px;
+		$input-color: lighten($footer-background, 20%);
+		input[type=text], input[type=email] {
+			@include transition(.2s);
+			font-family: $quote-font;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			-webkit-font-smoothing: antialiased;
+			background: darken($input-color, 25%);
+			font-size: 0.9em;
+			width: 100%;
+			font-weight: 100;
+			color: $input-color;
+			font-family: $body-font;
+			padding: 1.1em 1em;
+			border: none;
+			border-bottom: 1px solid transparent;
+			&:focus {
+				border-color: darken($input-color, 10%);
+				background: lighten($input-color, 50%);
+			}
+			&:hover::-webkit-input-placeholder, &:focus::-webkit-input-placeholder  {
+		    	color: lighten($input-color, 10%);
+			}
+			@media (max-width: $sm-width){
+				font-size: 16px;
+				padding: 0.7em 1em;
+				margin: -0.3em 0;
+			}
+		}
+		::-webkit-input-placeholder {
+	    	color: $input-color;
+		}
+		input:-moz-placeholder {
+		    color: $input-color;
+		} 
+		input#fieldName, button {
+			@include transition(.2s);
+			opacity: 0;
+			@media (max-width: $md-width){
+				opacity: 1 !important;
+			}
+		}
+		@media (max-width: $sm-width){
+			width: 100% !important;
+		}
+	}
+	@media (max-width: $sm-width){
+		width: 100% !important;
+	}
+}
+
+.backtotop {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: none;
+	border: none;
+	color: $footer-text;
+	font-size: 0.7em;
+	font-family: $gothic;
+	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 800;
+	letter-spacing: 2px;
+	padding: 10px;
+	margin-right: 5px;
+	cursor: pointer;
+	outline: none;
+	@include transition(.2s);
+	&:hover {
+		color: $brand-primary;
+	}
+}
+

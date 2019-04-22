@@ -1,0 +1,44 @@
+.mobile-show {
+	display: none !important;
+}
+@media (min-width: $md-width) and (max-width: $lg-width) {
+	//lg-width
+	.lg-hide {
+		display: none !important;
+	}
+	.lg-show {
+		display: revert !important;
+	}
+}
+@media (min-width: $sm-width) and (max-width: $md-width){
+	.md-hide {
+		display: none !important;
+	}
+	.md-show {
+		display: revert !important;
+	}
+}
+@media (min-width: $xs-width) and (max-width: $sm-width){
+	.sm-hide {
+		display: none !important;
+	}
+	.sm-show {
+		display: revert !important;
+	}
+}
+@media (min-width: 0px) and (max-width: $xs-width){
+	.xs-hide {
+		display: none !important;
+	}
+	.xs-show {
+		display: revert !important;
+	}
+}
+@media (max-width: $xs-width){
+	.mobile-hide {
+		display: none !important;
+	}
+	.mobile-show {
+		display: revert !important;
+	}
+}

@@ -1,0 +1,66 @@
+//BACKGROUNDS
+
+.background-cover {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.fixed-bg-wrapper {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	clip: rect(auto, auto, auto, auto);
+	pointer-events: none;
+	.fixed-bg {
+		height: 100%;
+		width: 100%;
+		left: 0;
+		top: 0;
+		position: fixed;
+		z-index: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+	}
+}
+
+.white-bg {
+	background: white;
+	color: $body-font-color;
+}
+.brand-primary-bg {
+	background: $brand-primary;
+	color: white;
+	p a {
+		color: darken($brand-primary-accent, 40%);
+	}
+	.fa-inverse {
+		color: $brand-primary-dark;
+		text-shadow: none;
+	}
+	hr {
+		border-bottom: 1px solid rgba(0,0,0,0.2);
+	}
+}
+.brand-primary-dark-bg {
+	background: #0d3a58;
+	color: white;
+}
+.light-bg {
+	background: $light-bg;
+	color: darken($light-bg, 70%);
+
+}
+.black-bg {
+	background: black;
+	color: white;
+	p a {
+		color: $brand-secondary;
+	}
+}

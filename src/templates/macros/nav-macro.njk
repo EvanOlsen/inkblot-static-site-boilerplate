@@ -1,0 +1,60 @@
+{% macro active(activePage='home') %}
+ 
+	<div class="top-nav">
+		<nav class="main-nav dropdown">
+			<div class="content-wide no-pad">
+				<a href="/" id="logo"><img src="/img/inkblot-logo_@2x.png" alt="Company name"/></a>
+				<button class="btn-toggle main-menu" data-target="main-navigation">
+					<small id="label">Menu</small>
+					<span id="one"></span>
+					<span id="two"></span>
+					<span id="three"></span>
+				</button>
+				<ul class="main-nav" id="main-navigation">
+					<li class="{%if activePage == 'item1' %} active {% endif %}"><a href="#">Item 1<span></span></a>
+						<button class="btn-submenu-dropdown" data-toggle="collapse" data-target="item2-submenu">
+							<div class="icon-wrapper">
+								<i class="fa fa-plus"></i>
+							</div>
+						</button>
+						<div class="submenu" id="item2-submenu">
+							<ul>
+								<li><a href=""></a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="{%if activePage == 'item2' %} active {% endif %}"><a href="#">Item 2<span></span></a>
+						<button class="btn-submenu-dropdown" data-toggle="collapse" data-target="item2-submenu">
+							<div class="icon-wrapper">
+								<i class="fa fa-plus"></i>
+							</div>
+						</button>
+						<div class="submenu" id="item2-submenu">
+							<ul>
+								<li><a href=""></a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="{%if activePage == 'item3' %} active {% endif %}"><a href="#">Item 3<span></span></a>
+					</li>
+					<li class="mobile-show">
+						<a href="#" class="btn primary btn-sm btn-block marg-tb-xs">CTA</a>
+					</li>
+					<ul class="mobile-footer">
+						<li class="social-icons">
+							<a href="http://facebook.com/" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+							<a href="http://instagram.com/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+						</li>
+					</ul>
+				</ul>
+				<ul class="main-nav right-side-nav">
+					<li>
+						<a href="#" class="btn primary sm-hide">CTA</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+
+{% endmacro %}

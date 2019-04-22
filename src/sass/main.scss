@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+//HELPERS
+@import "helpers/_reset.scss";
+@import "helpers/_mixins.scss";
+@import "helpers/_adaptive-placeholders"; 
+@import "helpers/_variables.scss";
+
+//BASE
+@import "base/_body.scss";
+@import "base/_grid.scss"; 
+@import "base/_show-hide.scss";
+@import "base/_layout.scss";
+@import "base/_typography.scss";
+@import "base/_buttons.scss";
+@import "base/_forms.scss";
+@import "base/_loading.scss";
+
+//COMPONENTS
+@import "components/_backgrounds.scss";
+@import "components/_images.scss";
+@import "components/_navs.scss";
+@import "components/_main-nav.scss";
+@import "components/_footer.scss";
+
+//PAGES
+@import "pages/_blog.scss";
+
+//ANIMATIONS
+@import "helpers/_animations.scss";

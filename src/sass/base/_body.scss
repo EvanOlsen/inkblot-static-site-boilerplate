@@ -1,0 +1,18 @@
+//BODY 
+
+body {
+	background: #efefef;
+	font-family: $body-font;
+	font-size: $body-font-size-desktop;
+	line-height: $body-font-line-height-desktop;
+	@include fluid-type(font-size, $xs-width, $lg-width, $body-font-size-mobile, $body-font-size-desktop);
+	@include fluid-type(line-height, $xs-width, $lg-width, $body-font-line-height-mobile, $body-font-line-height-desktop);
+	color: $body-font-color;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	-webkit-font-feature-settings: "pnum";
+	font-feature-settings: "pnum";
+	font-variant-numeric: proportional-nums;
+}
