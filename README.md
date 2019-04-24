@@ -4,7 +4,7 @@ A boilerplate for static HTML sites by Ink Blot Media Group.
 
 ## Installation
 
-This boilerplate requires [Node.js](https://nodejs.org/) v4+ to run.
+This boilerplate requires [Node.js](https://nodejs.org/) v6.9.0+ to run.
 
 ### Step 1
 ![enter image description here](https://help.github.com/assets/images/help/repository/clone-repo-clone-url-button.png)

@@ -1,7 +1,7 @@
 {
-	"name": "inkblot-static-site-boilerplate",
+	"name": "fortified-strategies",
 	"version": "0.0.1",
-	"description": "A boilerplate for static HTML sites by Ink Blot Media Group.",
+	"description": "Fortified Strategies Splash page",
 	"main": "./dist/js/main.min.js",
 	"author": {
 		"name": "Ink Blot Media Group",
@@ -10,8 +10,16 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/EvanOlsen/inkblot-static-site-boilerplate"
+		"url": "https://github.com/EvanOlsen/fortified-strategies"
 	},
+	"scripts": {
+	    "start": "gulp",
+	    "compile": "NODE_ENV=production gulp compile",
+	    "test": "gulp validate",
+	    "gulp": "gulp",
+	    "update": "npm update",
+	    "postinstall": "find node_modules/ -name \"*.info\" -type f -delete"
+	  },
 	"devDependencies": {
 		"browser-sync": "2.26.3",
 		"del": "3.0.0",

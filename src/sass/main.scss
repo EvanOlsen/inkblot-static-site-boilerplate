@@ -3,6 +3,7 @@
 //HELPERS
 @import "helpers/_reset.scss";
 @import "helpers/_mixins.scss";
+@import "helpers/_include-media.scss";
 @import "helpers/_adaptive-placeholders"; 
 @import "helpers/_variables.scss";
 
@@ -24,7 +25,6 @@
 @import "components/_footer.scss";
 
 //PAGES
-@import "pages/_blog.scss";
 
 //ANIMATIONS
 @import "helpers/_animations.scss";

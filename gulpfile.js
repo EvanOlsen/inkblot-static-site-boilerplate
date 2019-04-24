@@ -111,18 +111,14 @@ var browserSync = require('browser-sync');
 
 // Remove pre-existing content from output folders
 var cleanDist = function (done) {
-
 	// Make sure this feature is activated before running
 	if (!settings.clean) return done();
-
 	// Clean the dist folder
 	del.sync([
 		paths.output
 	]);
-
 	// Signal completion
 	return done();
-
 };
 
 // Repeated JavaScript tasks
@@ -138,10 +134,8 @@ var jsTasks = lazypipe()
 
 // Lint, minify, and concatenate scripts
 var buildScripts = function (done) {
-
 	// Make sure this feature is activated before running
 	if (!settings.scripts) return done();
-
 	// Run tasks on script files
 	return src(paths.scripts.input)
 		.pipe(flatmap(function(stream, file) {
@@ -313,7 +307,7 @@ var reloadBrowser = function (done) {
 
 // Watch for changes
 var watchSource = function (done) {
-	watch(paths.input, series(exports.default, reloadBrowser));
+	watch(paths.input, series(exports.watch, reloadBrowser));
 	done();
 };
 
@@ -334,13 +328,33 @@ exports.default = series(
 		buildSVGs,
 		optimizeImg,
 		copyFiles
-	)
+	),
+	startServer,
+	watchSource
 );
 
 // Watch and reload
 // gulp watch
 exports.watch = series(
-	exports.default,
-	startServer,
-	watchSource
+	parallel(
+		buildScripts,
+		buildTemplates,
+		lintScripts,
+		buildStyles
+	)
+);
+
+// Watch and reload
+// gulp build
+exports.build = series(
+	cleanDist,
+	parallel(
+		buildScripts,
+		buildTemplates,
+		lintScripts,
+		buildStyles,
+		buildSVGs,
+		optimizeImg,
+		copyFiles
+	)
 );

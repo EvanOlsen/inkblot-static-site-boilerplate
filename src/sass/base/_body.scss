@@ -1,7 +1,17 @@
 //BODY 
 
+html {
+	background: $body-bg-color url('/img/fs__splash-page__main-bg.jpg') no-repeat center;
+	background-size: cover;
+	width: 100%;
+	min-height: 100vh;
+	@include media('<small') {
+		background-image: url('/img/fs__splash-page__main-bg@sm.jpg');
+		background-position: right top;
+	}
+}
+
 body {
-	background: #efefef;
 	font-family: $body-font;
 	font-size: $body-font-size-desktop;
 	line-height: $body-font-line-height-desktop;
