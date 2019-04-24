@@ -23,10 +23,10 @@ You should immediately see the necessary packages installed in /node_modules/ fo
 
 Once installed, enter command
 ```sh
-gulp watch
+gulp
 ```
 
-Which will return something like this:
+Which will activate gulp's tasks and return something like this:
 ```sh
     [16:24:10] Using gulpfile ~/Sites/<repo folder name>/gulpfile.js
     [16:24:10] Starting 'watch'...
